@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import AppButton from '../components/AppButton';
-import AppTextInput from '../components/AppTextInput';
+import AppFormField from '../components/AppFormField';
 import ErrorMessage from '../components/ErrorMessage';
 import Screen from '../components/Screen';
 
@@ -24,29 +24,25 @@ function LoginScreen(props) {
       >
         {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
           <>
-            <AppTextInput
+            <AppFormField
               autoCapitalize='none'
               autoCorrect={false}
               icon='email'
               keyboardType='email-address'
-              onBlur={() => setFieldTouched('email')}
-              onChangeText={handleChange('email')}
+              name='email'
               placeholder='Email'
               textContentType='emailAddress'
             />
-            <ErrorMessage error={errors.email} visible={touched.email} />
-            <AppTextInput
+            <AppFormField
               autoCapitalize='none'
               autoCorrect={false}
-              onBlur={() => setFieldTouched('password')}
-              onChangeText={handleChange('password')}
               icon='lock'
               keyboardType='email-address'
+              name='password'
               placeholder='Password'
               secureTextEntry
               textContentType='password'
             />
-            <ErrorMessage error={errors.password} visible={touched.password} />
             <AppButton title='Login' onPress={handleSubmit} />
           </>
         )}
