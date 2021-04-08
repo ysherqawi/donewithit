@@ -4,8 +4,8 @@ import Constants from 'expo-constants';
 
 function Screen({ children, style }) {
   return (
-    <SafeAreaView style={styles.screen}>
-      <View style={style}>{children}</View>
+    <SafeAreaView style={[styles.screen, style]}>
+      <View style={[styles.view, style]}>{children}</View>
     </SafeAreaView>
   );
 }
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     flex: 1,
   },
+  view: { flex: 1 },
 });
 
 export default Screen;
