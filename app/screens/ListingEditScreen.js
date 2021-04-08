@@ -1,12 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 
-import {
-  AppForm,
-  AppFormField as FormField,
-  AppFormPicker as Picker,
-  SubmitButton,
-} from '../components/forms';
+import { Form, FormField, FormPicker, SubmitButton } from '../components/forms';
 import Screen from '../components/Screen';
 import CategoryPickerItem from '../components/CategoryPickerItem';
 
@@ -77,7 +72,7 @@ const categories = [
 function ListingEditScreen(props) {
   return (
     <Screen>
-      <AppForm
+      <Form
         initialValues={{
           title: '',
           price: '',
@@ -95,7 +90,7 @@ function ListingEditScreen(props) {
           placeholder='Price'
           width={120}
         />
-        <Picker
+        <FormPicker
           items={categories}
           name='category'
           numberOfColumns={3}
@@ -111,7 +106,7 @@ function ListingEditScreen(props) {
           placeholder='Description'
         />
         <SubmitButton title='Post' />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }
