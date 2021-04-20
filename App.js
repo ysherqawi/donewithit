@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ImageInput from './app/components/ImageInput';
 
-import WelcomeScreen from './app/screens/AccountScreen';
+import Screen from './app/components/Screen';
 
 export default function App() {
-  return <WelcomeScreen />;
+  const [imageUri, SetImageUri] = useState();
+
+  return (
+    <Screen>
+      <ImageInput
+        imageUri={imageUri}
+        onChangeImage={(uri) => SetImageUri(uri)}
+      />
+    </Screen>
+  );
 }
