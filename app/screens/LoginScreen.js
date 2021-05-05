@@ -5,6 +5,7 @@ import jwtDecode from 'jwt-decode';
 
 import authApi from '../api/auth';
 import AuthContext from '../auth/context';
+import authStorage from '../auth/storage';
 import {
   ErrorMessage,
   Form,
@@ -28,6 +29,7 @@ function LoginScreen(props) {
     setLoginFailed(false);
     const user = jwtDecode(result.data);
     authContext.setUser(user);
+    authStorage.storeToken(result.data);
   };
 
   return (
