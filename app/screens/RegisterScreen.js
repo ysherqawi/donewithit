@@ -46,46 +46,48 @@ function RegisterScreen() {
   };
 
   return (
-    <Screen style={styles.container}>
+    <>
       {/* <ActivityIndicator visible={registerApi.loading||loginApi.loading} /> */}
-      <ActivityIndicator
-        animating={registerApi.loading || loginApi.loading}
-        size='large'
-      />
-      <Form
-        initialValues={{ name: '', email: '', password: '' }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <ErrorMessage error={error} visible={error} />
+      <Screen style={styles.container}>
+        <ActivityIndicator
+          animating={registerApi.loading || loginApi.loading}
+          size='large'
+        />
+        <Form
+          initialValues={{ name: '', email: '', password: '' }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <ErrorMessage error={error} visible={error} />
 
-        <FormField
-          autoCorrect={false}
-          icon='account'
-          name='name'
-          placeholder='Name'
-        />
-        <FormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          icon='email'
-          keyboardType='email-address'
-          name='email'
-          placeholder='Email'
-          textContentType='emailAddress'
-        />
-        <FormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          icon='lock'
-          name='password'
-          placeholder='Password'
-          secureTextEntry
-          textContentType='password'
-        />
-        <SubmitButton title='Register' />
-      </Form>
-    </Screen>
+          <FormField
+            autoCorrect={false}
+            icon='account'
+            name='name'
+            placeholder='Name'
+          />
+          <FormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            icon='email'
+            keyboardType='email-address'
+            name='email'
+            placeholder='Email'
+            textContentType='emailAddress'
+          />
+          <FormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            icon='lock'
+            name='password'
+            placeholder='Password'
+            secureTextEntry
+            textContentType='password'
+          />
+          <SubmitButton title='Register' />
+        </Form>
+      </Screen>
+    </>
   );
 }
 
