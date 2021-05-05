@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
+import AuthContext from '../auth/context';
 import Screen from '../components/Screen';
 import { ListItem, ListItemSeparator } from '../components/lists';
 import Icon from '../components/Icon';
@@ -25,12 +26,14 @@ const menuItems = [
 ];
 
 function AccountScreen({ navigation }) {
+  const { user } = useContext(AuthContext);
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title='User'
-          subTitle='user@example.com'
+          title={user.name}
+          subTitle={user.email}
           image={require('../assets/user.jpg')}
         />
       </View>
