@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import * as Yup from 'yup';
-import authApi from '../api/auth';
 import jwtDecode from 'jwt-decode';
 
+import authApi from '../api/auth';
+import AuthContext from '../auth/context';
 import {
   ErrorMessage,
   Form,
@@ -19,13 +20,14 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen(props) {
   const [loginFailed, setLoginFailed] = useState(false);
+  const authContext = useContext(AuthContext);
 
   const handleSubmit = async ({ email, password }) => {
     const result = await authApi.login(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
     const user = jwtDecode(result.data);
-    console.log(user);
+    authContext.setUser(user);
   };
 
   return (
@@ -33,7 +35,7 @@ function LoginScreen(props) {
       <Image style={styles.logo} source={require('../assets/logo-red.png')} />
       <Form
         initialValues={{ email: '', password: '' }}
-        onSubmit={(values) => handleSubmit}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <ErrorMessage
