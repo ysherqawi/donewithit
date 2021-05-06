@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Notification from 'expo-notifications';
+import * as Notification from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 
 import AccountNavigator from './AccountNavigator';
@@ -10,6 +10,7 @@ import FeedNavigator from './FeedNavigator';
 import ListingEditScreen from '../screens/ListingEditScreen';
 import NewListingButton from './NewListingButton';
 import routes from '../navigation/routes';
+import navigation from './rootNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +28,10 @@ const AppNavigator = () => {
 
   useEffect(() => {
     registerForPushNotifications();
+
+    Notification.addNotificationReceivedListener((notification) =>
+      navigation.navigate('Account')
+    );
   }, []);
   return (
     <Tab.Navigator>
