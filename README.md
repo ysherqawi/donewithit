@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-![screenshot](https://github.com/ysherqawi/donewithit/blob/master/screenshoot.jpg)
+![screenshot](https://github.com/ysherqawi/donewithit/blob/main/screenshoot.jpg)
 
 ## Master React Native Using a Real Project
 
